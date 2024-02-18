@@ -16,7 +16,10 @@ class MainActivity : AppCompatActivity() {
         val plusButton: Button = findViewById(R.id.plusButton)
         val minusButton: Button = findViewById(R.id.minusButton)
         val savedData = MyApplication.getApp().getSavedData()
-        value = savedData.toInt()
+        if (savedData.isEmpty()) {
+            value = 0
+        } else value = savedData.toInt()
+
         textValue?.setText(savedData)
 
         plusButton.setOnClickListener {
